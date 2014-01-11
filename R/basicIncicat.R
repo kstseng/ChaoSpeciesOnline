@@ -1,4 +1,4 @@
-basicInci <- function(data, k){
+basicIncicat <- function(data, k){
   data <- as.numeric(data)
   t <- data[1]
   dat <- data[-1]

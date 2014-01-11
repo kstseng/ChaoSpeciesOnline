@@ -23,13 +23,13 @@ function(data, datatype = c("abundance", "incidence"), method = c("all", "Homoge
       f <- function(i, data){length(data[which(data == i)])}
       if (f(1, data) == sum(data)){
         stop("Error: The information of data is not enough.")}
-      if (detail == T) basicAbun(data, k)
+      if (detail == T) basicAbuncat(data, k)
       SpeciesAbundance(data, method = method, k = k, conf = conf)
     } else {
       dat <- data[-1]; Q <- function(i, data){length(data[which(data == i)])}
       if (Q(1, dat) == sum(dat)){
         stop("Error: The information of data is not enough.")}
-      if (detail == T) basicInci(data, k)
+      if (detail == T) basicIncicat(data, k)
       SpeciesIncidence(data, method = method, k = k, conf = conf)  
     }
 }

@@ -1,4 +1,4 @@
-basicAbun <-
+basicAbuncat <-
   function(data, k){
     data <- as.numeric(data)
     
