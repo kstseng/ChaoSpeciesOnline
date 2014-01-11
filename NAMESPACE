@@ -1,6 +1,4 @@
-export(ChaoSpecies)
-export(SpeciesAbundance) 
-export(SpeciesIncidence)
+export(ChaoSpeciesOnline)
 export(DataTransform)
 export(basicAbuncat)
 export(basicIncicat)

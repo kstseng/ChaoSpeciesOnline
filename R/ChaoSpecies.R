@@ -1,4 +1,4 @@
-ChaoSpecies <-
+ChaoSpeciesOnline <-
 function(data, datatype = c("abundance", "incidence"), method = c("all", "Homogeneous", "Chao", "CE", "Jackknife"),
          k = 10, conf = 0.95, detail = c(TRUE, FALSE)){
   method <- match.arg(method)
