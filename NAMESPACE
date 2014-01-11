@@ -1,4 +1,2 @@
 export(ChaoSpeciesOnline)
 export(DataTransform)
-export(basicAbuncat)
-export(basicIncicat)
