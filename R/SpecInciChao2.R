@@ -75,7 +75,7 @@ function(data, k, conf){
   }
   table <- matrix(c(S_Chao2, sqrt(var_Chao2), CI_Chao2), ncol = 4)
   colnames(table) <- c("Estimate", "Est_s.e.", paste(conf*100,"% Lower Bound"), paste(conf*100,"% Upper Bound"))
-  rownames(table) <- "Chao2 (Chao, 1987)"
+  rownames(table) <- "Chao2 (Chao, 2013)"
   return(table)
   
 }
