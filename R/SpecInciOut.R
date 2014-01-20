@@ -21,9 +21,9 @@ function(data, method = c("all", "Homogeneous", "Chao", "CE", "Jackknife"), k, c
     
     if (sum(method == "all") != 0){ #if "all" in method
       out <- tmp1
-    }else if (sum(method == "Jackknife") != 0){
+    }else if (sum(method == "CE") != 0){
       out <- do.call("rbind", lapply(ind, function(ind)tmp2[[ind]]))
-      det <- which(rownames(out) == "1st order jackknife" | rownames(out) == "2nd order jackknife")
+      det <- which(rownames(out) == "CE")
       value.na <- matrix(rep(NA, nrow(out)), ncol = 1)
       colnames(value.na) <- "Est.CV(rare)"
       
