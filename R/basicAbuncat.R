@@ -1,5 +1,15 @@
 basicAbuncat <- function(data, k){
-    data <- as.numeric(data)
+  if (is.matrix(data) == T || is.data.frame(data) == T){
+    if (ncol(data) != 1 & nrow(data) != 1)
+      stop("Error: The data format is wrong.")
+    if (ncol(data) == 1){
+      data <- data[, 1]
+    } else {
+      data <- data[1, ]
+    }
+  }
+  
+  data <- as.numeric(data)
     
     x <- data[which(data != 0)]
     n <- sum(x)
