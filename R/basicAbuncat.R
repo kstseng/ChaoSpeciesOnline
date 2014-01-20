@@ -41,7 +41,7 @@ basicAbuncat <- function(data, k){
     r <- c(1:k)
     rsg <- matrix(sapply(r, function(r)f(r, x)), 1, k)
     
-    cat("(1) BASIC DATA INFORMATION  \n ", fill = TRUE)
+    #cat("(1) BASIC DATA INFORMATION  \n ", fill = TRUE)
     cat("             (Number of observed individuals)  n ", sep = " = ", n, fill = TRUE)  
     cat("             (Number of observed species)      D ", sep = " = ", D, fill = TRUE)    
     cat("             (Cut-off point)                   k ", sep = "  = ", k, fill = TRUE)    

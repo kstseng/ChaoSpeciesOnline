@@ -27,7 +27,7 @@ basicIncicat <- function(data, k){
   Q <- function(i, data){length(data[which(data == i)])}
   rsg <- matrix(sapply(j, function(j)f(j, x)), 1, k)
   
-  cat("(1) BASIC DATA INFORMATION  \n ", fill = TRUE)
+  #cat("(1) BASIC DATA INFORMATION  \n ", fill = TRUE)
   cat("             (Number of observed species)  D ", sep = " = ", D, fill = TRUE)    
   cat("             (Number of samples/quadrats)  t ", sep = " = ", t, fill = TRUE)    
   cat("             (Cut-off point)               k ", sep = " = ", k, fill = TRUE)    
