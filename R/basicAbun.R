@@ -1,5 +1,4 @@
-basicAbun <-
-function(data, k){
+basicAbun <- function(data, k){
   data <- as.numeric(data)
   
   x <- data[which(data != 0)]
@@ -16,6 +15,7 @@ function(data, k){
   D_abun <- length(x[which(x > k)])
   
   j <- c(1:k)
+  f <- function(i, data){length(data[which(data == i)])}
   a1 <- sum(sapply(j, function(j)j*(j - 1)*f(j, x)))
   a2 <- sum(sapply(j, function(j)j*f(j, x)))
   if (C_rare != 0){

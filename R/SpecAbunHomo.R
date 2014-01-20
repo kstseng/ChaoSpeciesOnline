@@ -106,6 +106,6 @@ function(data, k, conf){
   }
   table <- matrix(c(s_homo, sqrt(var_mle), CI_homo), ncol = 4)
   colnames(table) <- c("Estimate", "Est_s.e.", paste(conf*100,"% Lower Bound"), paste(conf*100,"% Upper Bound"))
-  rownames(table) <- "Homogenous Model"
+  rownames(table) <- "Homogeneous Model"
   return(table)
 }

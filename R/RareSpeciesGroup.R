@@ -1,5 +1,4 @@
-RareSpeciesGroup <-
-function(data, k){
+RareSpeciesGroup <- function(data, k){
   data <- as.numeric(data)
   f <- function(i, data){length(data[which(data == i)])}
 

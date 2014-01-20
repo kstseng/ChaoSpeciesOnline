@@ -44,7 +44,7 @@ basicAbuncat <- function(data, k){
     #cat("(1) BASIC DATA INFORMATION  \n ", fill = TRUE)
     cat("             (Number of observed individuals)  n ", sep = " = ", n, fill = TRUE)  
     cat("             (Number of observed species)      D ", sep = " = ", D, fill = TRUE)    
-    cat("             (Cut-off point)                   k ", sep = "  = ", k, fill = TRUE)    
+    cat("             (Cut-off point)                   k ", sep = " = ", k, fill = TRUE)    
     cat("\n", fill = TRUE)    
     cat("   \"Rare\" Shared Species Group: (Frequencies counts up to cut-off point k)", fill = TRUE)
     cat("          Some Statistics:", fill = TRUE)
