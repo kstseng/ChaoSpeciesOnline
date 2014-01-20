@@ -1,33 +1,38 @@
 SpecInciOut <-
 function(data, method = c("all", "Homogeneous", "Chao", "CE", "Jackknife"), k, conf){
-    a <- round(SpecInciHomo(data, k, conf), 3)
-    b <- round(SpecInciChao2(data, k, conf), 3)
-    c <- round(SpecInciChao2bc(data, k, conf), 3)
-    d <- round(SpecInciiChao2(data, k, conf), 3)
-    e <- round(SpecInciModelh(data, k, conf)[[1]], 3)
-    f <- round(SpecInciModelh1(data, k, conf)[[1]], 3)
-    g <- round(SpecInciJack1(data, k, conf), 3)
-    h <- round(SpecInciJack2(data, k, conf), 3)
+    ind <- pmatch(method, c("Homogeneous", "Chao", "CE", "Jackknife"))
+    Homo <- round(SpecInciHomo(data, k, conf), 3)
+    Chao <- rbind(round(SpecInciChao2(data, k, conf), 3), round(SpecInciChao2bc(data, k, conf), 3),
+                  round(SpecInciiChao2(data, k, conf), 3))
+    CE <- rbind(round(SpecInciModelh(data, k, conf)[[1]], 3), round(SpecInciModelh1(data, k, conf)[[1]], 3))
+    Jackknife <- rbind(round(SpecInciJack1(data, k, conf), 3), round(SpecInciJack2(data, k, conf), 3))
+
     est.cv <- data.frame(c("", "", "", "", round(SpecInciModelh(data, k, conf)[[2]], 3), 
                            round(SpecInciModelh1(data, k, conf)[[2]], 3), "", ""))
     colnames(est.cv) <- "Est.CV(rare)"
-  if (method == "all") {
-    out <- cbind(rbind(a, b, c, d, e, f, g, h), est.cv)
-  }
-  
-  if (method == "Homogeneous")
-    out <- a
-  if (method == "Chao")
-    out <- rbind(b, c, d)
-  if (method == "CE"){
-    est.cv <- matrix(c(SpecInciModelh(data, k, conf)[[2]], SpecInciModelh1(data, k, conf)[[2]]), ncol = 1)
-    est.cv <- round(est.cv, 3)
-    colnames(est.cv) <- "Est.CV(rare)"
-    out1 <- rbind(e, f)
-    out <- cbind(out1, est.cv)
-  }
-  if (method == "Jackknife")
-    out <- rbind(g, h)
+    
+#     est.cv_J <- matrix(c(round(SpecInciModelh(data, k, conf)[[2]], 3), round(SpecInciModelh1(data, k, conf)[[2]], 3)),
+#                        nrow = 2)
+    est.cv_J <- c(round(SpecInciModelh(data, k, conf)[[2]], 3), round(SpecInciModelh1(data, k, conf)[[2]], 3))
+                      
+    Jackknife.cv <- cbind(Jackknife, est.cv_J)
+    tmp1 <- cbind(rbind(Homo, Chao, CE, Jackknife), est.cv)
+    tmp2 <- list(Homo, Chao, CE, Jackknife)
+    
+    if (sum(method == "all") != 0){ #if "all" in method
+      out <- tmp1
+    }else if (sum(method == "Jackknife") != 0){
+      out <- do.call("rbind", lapply(ind, function(ind)tmp2[[ind]]))
+      det <- which(rownames(out) == "1st order jackknife" | rownames(out) == "2nd order jackknife")
+      value.na <- matrix(rep(NA, nrow(out)), ncol = 1)
+      colnames(value.na) <- "Est.CV(rare)"
+      
+      out <- cbind(out, value.na)   
+      out[det, 5] = est.cv_J
+      
+    }else{
+      out <- do.call("rbind", lapply(ind, function(ind)tmp2[[ind]]))
+    }
   
   return(out)
 }
