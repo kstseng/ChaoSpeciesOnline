@@ -15,7 +15,6 @@ function(data, method = c("all", "Homogeneous", "Chao", "CE", "Jackknife"), k, c
 #                        nrow = 2)
     est.cv_J <- c(round(SpecInciModelh(data, k, conf)[[2]], 3), round(SpecInciModelh1(data, k, conf)[[2]], 3))
                       
-    Jackknife.cv <- cbind(Jackknife, est.cv_J)
     tmp1 <- cbind(rbind(Homo, Chao, CE, Jackknife), est.cv)
     tmp2 <- list(Homo, Chao, CE, Jackknife)
     
@@ -23,7 +22,8 @@ function(data, method = c("all", "Homogeneous", "Chao", "CE", "Jackknife"), k, c
       out <- tmp1
     }else if (sum(method == "CE") != 0){
       out <- do.call("rbind", lapply(ind, function(ind)tmp2[[ind]]))
-      det <- which(rownames(out) == "CE")
+      det <- which(rownames(out) == "Model(h) (ICE) (Lee & Chao, 1994)" | 
+                   rownames(out) == "Model(h)-1 (ICE-1)")
       value.na <- matrix(rep(NA, nrow(out)), ncol = 1)
       colnames(value.na) <- "Est.CV(rare)"
       
