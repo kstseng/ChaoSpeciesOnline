@@ -1,5 +1,4 @@
-basicAbuncat <-
-  function(data, k){
+basicAbuncat <- function(data, k){
     data <- as.numeric(data)
     
     x <- data[which(data != 0)]
@@ -7,6 +6,7 @@ basicAbuncat <-
     D <- length(x)
     n_rare <- sum(x[which(x <= k)])
     D_rare <- length(x[which(x <= k)])
+    f <- function(i, data){length(data[which(data == i)])}
     if (n_rare != 0){
       C_rare <- 1 - f(1, x)/n_rare
     } else {
@@ -28,7 +28,6 @@ basicAbuncat <-
     CV_rare <- sqrt(gamma_rare_hat_square)
     CV1_rare <- sqrt(gamma_rare_1_square)
     
-    f <- function(i, data){length(data[which(data == i)])}
     r <- c(1:k)
     rsg <- matrix(sapply(r, function(r)f(r, x)), 1, k)
     

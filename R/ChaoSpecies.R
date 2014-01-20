@@ -1,6 +1,6 @@
 ChaoSpeciesOnline <-
 function(data, datatype = c("abundance", "incidence"), method = c("all", "Homogeneous", "Chao", "CE", "Jackknife"),
-         k = 10, conf = 0.95, detail = c(TRUE, FALSE)){
+         k = 10, conf = 0.95, detail = TRUE){
   method <- match.arg(method)
   if (k != round(k) || k < 0) 
     stop("Error: The cutoff t to define less abundant species must be non-negative integer!")
