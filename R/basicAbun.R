@@ -6,6 +6,7 @@ basicAbun <- function(data, k){
   D <- length(x)
   n_rare <- sum(x[which(x <= k)])
   D_rare <- length(x[which(x <= k)])
+  f <- function(i, data){length(data[which(data == i)])}
   if (n_rare != 0){
     C_rare <- 1 - f(1, x)/n_rare
   } else {
@@ -15,7 +16,6 @@ basicAbun <- function(data, k){
   D_abun <- length(x[which(x > k)])
   
   j <- c(1:k)
-  f <- function(i, data){length(data[which(data == i)])}
   a1 <- sum(sapply(j, function(j)j*(j - 1)*f(j, x)))
   a2 <- sum(sapply(j, function(j)j*f(j, x)))
   if (C_rare != 0){
