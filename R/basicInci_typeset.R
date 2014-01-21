@@ -35,13 +35,14 @@ basicIncitype <- function(data, k){
   D_freq <- length(x[which(x > k)])
   
   basicInfo <- matrix(c(D, t, k), nrow = 1); colnames(basicInfo) <- c("S.obs", "t", "cutpt")
-    rownames(basicInfo) <- "BasicInfo"
+    rownames(basicInfo) <- ""
   infreqInfo <- matrix(D_infreq, nrow = 1); colnames(infreqInfo) <- c("S.obs_infreq")
     rownames(infreqInfo) <- "InfreqInfo"
   infreqInfo2 <- matrix(c(C_infreq, CV_infreq), nrow = 1); colnames(infreqInfo2) <- c("C_infreq", "CV_infeq")
-    rownames(infreqInfo2) <- "OtherInfo"
+    rownames(infreqInfo2) <- ""
   freqInfo <- matrix(c(D_freq), nrow = 1); colnames(freqInfo) <- c("S.obs_freq")
     rownames(freqInfo) <- "FreqInfo"
   
-  return(list(cbind(basicInfo, infreqInfo, freqInfo), infreqInfo2))
+  return(list(Result1 = cbind(basicInfo, infreqInfo, freqInfo),
+              Result2 = infreqInfo2))
   }

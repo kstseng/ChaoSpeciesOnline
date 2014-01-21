@@ -46,6 +46,6 @@ basicAbuntype <- function(data, k){
   abunInfo <- matrix(c(n_abun, D_abun), nrow = 1); colnames(abunInfo) <- c("n_abun", "S.obs_abun")
     rownames(abunInfo) <- "AbunInfo"
   
-  return(list(RESULT1 = cbind(basicInfo, rareInfo, abunInfo)
-               ,RESULT2 =  rareInfo2))
+  return(list(Result1 = cbind(basicInfo, rareInfo, abunInfo)
+               ,Result2 =  rareInfo2))
 }
