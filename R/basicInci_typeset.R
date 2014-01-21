@@ -43,6 +43,21 @@ basicIncitype <- function(data, k){
   freqInfo <- matrix(c(D_freq), nrow = 1); colnames(freqInfo) <- c("S.obs_freq")
     rownames(freqInfo) <- "FreqInfo"
   
+  InfreqSpeciesGroup <- function(data, k){
+    data <- data[-1]
+    data <- as.numeric(data)
+    Q <- function(i, data){length(data[which(data == i)])}
+    
+    x <- data[which(data != 0)]
+    r <- c(1:k)
+    Rare.Species.Group <- matrix(sapply(r, function(r)Q(r, x)), 1, k)
+    rownames(Rare.Species.Group) <- ""
+    colnames(Rare.Species.Group) <- paste("Q", r, sep="")
+    return(Rare.Species.Group)
+  }
+  
+  
   return(list(Result1 = cbind(basicInfo, infreqInfo, freqInfo),
-              Result2 = infreqInfo2))
+              Result2 = infreqInfo2, 
+              Result3 = InfreqSpeciesGroup(data, k)))
   }

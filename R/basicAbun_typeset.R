@@ -46,6 +46,29 @@ basicAbuntype <- function(data, k){
   abunInfo <- matrix(c(n_abun, D_abun), nrow = 1); colnames(abunInfo) <- c("n_abun", "S.obs_abun")
     rownames(abunInfo) <- "AbunInfo"
   
-  return(list(Result1 = cbind(basicInfo, rareInfo, abunInfo)
-               ,Result2 =  rareInfo2))
+  RareSpeciesGroup <- function(data, k){
+    if (is.matrix(data) == T || is.data.frame(data) == T){
+      if (ncol(data) != 1 & nrow(data) != 1)
+        stop("Error: The data format is wrong.")
+      if (ncol(data) == 1){
+        data <- data[, 1]
+      } else {
+        data <- data[1, ]
+      }
+    }
+    
+    data <- as.numeric(data)
+    f <- function(i, data){length(data[which(data == i)])}
+    
+    x <- data[which(data != 0)]
+    r <- c(1:k)
+    Rare.Species.Group <- matrix(sapply(r, function(r)f(r, x)), 1, k)
+    rownames(Rare.Species.Group) <- ""
+    colnames(Rare.Species.Group) <- paste("f", r, sep="")
+    return(Rare.Species.Group)
+  }
+  
+  return(list(Result1 = cbind(basicInfo, rareInfo, abunInfo),
+              Result2 =  rareInfo2, 
+              Result3 = RareSpeciesGroup(data, k)))
 }
