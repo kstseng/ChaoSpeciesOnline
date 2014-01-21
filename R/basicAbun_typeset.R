@@ -38,11 +38,11 @@ basicAbuntype <- function(data, k){
   CV1_rare <- sqrt(gamma_rare_1_square)
 
   basicInfo <- matrix(c(n, D, k), nrow = 1); colnames(basicInfo) <- c("n", "S.obs", "cutpt")
-   rownames(basicInfo) <- "BasicInfo"
+   rownames(basicInfo) <- ""
   rareInfo <- matrix(c(n_rare, D_rare), nrow = 1); colnames(rareInfo) <- c("n_rare", "S.obs_rare")
     rownames(rareInfo) <- "RareInfo"
   rareInfo2 <- matrix(c(C_rare, CV_rare, CV1_rare), nrow = 1); colnames(rareInfo2) <- c("C_rare", "CV_rare", "CV1_rare")
-    rownames(rareInfo2) <- "OtherInfo"
+    rownames(rareInfo2) <- ""
   abunInfo <- matrix(c(n_abun, D_abun), nrow = 1); colnames(abunInfo) <- c("n_abun", "S.obs_abun")
     rownames(abunInfo) <- "AbunInfo"
   
