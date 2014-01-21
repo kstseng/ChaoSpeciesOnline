@@ -8,7 +8,6 @@ basicAbuntype <- function(data, k){
       data <- data[1, ]
     }
   }
-  
   data <- as.numeric(data)
   
   x <- data[which(data != 0)]
@@ -39,7 +38,7 @@ basicAbuntype <- function(data, k){
   CV1_rare <- sqrt(gamma_rare_1_square)
 
   basicInfo <- matrix(c(n, D, k), nrow = 1); colnames(basicInfo) <- c("n", "S.obs", "cutpt")
-    rownames(basicInfo) <- "BasicInfo"
+   rownames(basicInfo) <- "BasicInfo"
   rareInfo <- matrix(c(n_rare, D_rare), nrow = 1); colnames(rareInfo) <- c("n_rare", "S.obs_rare")
     rownames(rareInfo) <- "RareInfo"
   rareInfo2 <- matrix(c(C_rare, CV_rare, CV1_rare), nrow = 1); colnames(rareInfo2) <- c("C_rare", "CV_rare", "CV1_rare")
@@ -47,6 +46,6 @@ basicAbuntype <- function(data, k){
   abunInfo <- matrix(c(n_abun, D_abun), nrow = 1); colnames(abunInfo) <- c("n_abun", "S.obs_abun")
     rownames(abunInfo) <- "AbunInfo"
   
-  return(list(cbind(basicInfo, rareInfo, abunInfo), rareInfo2))
-  #return(cbind(basicInfo, rareInfo, abunInfo))
+  return(list(RESULT1 = cbind(basicInfo, rareInfo, abunInfo)
+               ,RESULT2 =  rareInfo2))
 }
