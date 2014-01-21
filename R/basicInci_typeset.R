@@ -34,7 +34,7 @@ basicIncitype <- function(data, k){
   CV_infreq <- sqrt(gamma_infreq_square)
   D_freq <- length(x[which(x > k)])
   
-  basicInfo <- matrix(c(D, t, k), nrow = 1); colnames(basicInfo) <- c("S.obs", "t", "cutpt")
+  basicInfo <- matrix(c(t, D, k), nrow = 1); colnames(basicInfo) <- c("t", "S.obs", "cutpt")
     rownames(basicInfo) <- ""
   infreqInfo <- matrix(D_infreq, nrow = 1); colnames(infreqInfo) <- c("S.obs_infreq")
     rownames(infreqInfo) <- "InfreqInfo"
