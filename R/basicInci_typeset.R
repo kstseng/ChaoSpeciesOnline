@@ -55,9 +55,7 @@ basicIncitype <- function(data, k){
     colnames(Rare.Species.Group) <- paste("Q", r, sep="")
     return(Rare.Species.Group)
   }
+  out <- cbind(basicInfo, infreqInfo, freqInfo, infreqInfo2)
   
-  
-  return(list(Result1 = cbind(basicInfo, infreqInfo, freqInfo),
-              Result2 = infreqInfo2, 
-              Result3 = InfreqSpeciesGroup(data, k)))
+  return(out)
   }
