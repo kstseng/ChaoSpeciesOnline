@@ -1,4 +1,4 @@
-RareSpeciesGroupInprove <- function(data, k){
+RareSpeciesGroupImprove <- function(data, k){
   if (is.matrix(data) == T || is.data.frame(data) == T){
     if (ncol(data) != 1 & nrow(data) != 1)
       stop("Error: The data format is wrong.")
