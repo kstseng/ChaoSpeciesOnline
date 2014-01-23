@@ -77,5 +77,5 @@ basicAbuntype <- function(data, k){
 #   return(list(cbind(basicInfo, rareInfo, abunInfo),
 #               rareInfo2, 
 #               RareSpeciesGroup(data, k)))
-  return(list(cbind(basicInfo, rareInfo, abunInfo, rareInfo2)))
+  return(cbind(basicInfo, rareInfo, abunInfo, rareInfo2))
 }
