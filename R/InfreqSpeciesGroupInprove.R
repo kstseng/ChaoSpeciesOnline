@@ -1,6 +1,16 @@
 InfreqSpeciesGroupInprove <- function(data, k){
-  data <- data[-1]
+  if (is.matrix(data) == T || is.data.frame(data) == T){
+    if (ncol(data) != 1 & nrow(data) != 1)
+      stop("Error: The data format is wrong.")
+    if (ncol(data) == 1){
+      data <- data[, 1]
+    } else {
+      data <- data[1, ]
+    }
+  }
   data <- as.numeric(data)
+  
+  data <- data[-1]
   Q <- function(i, data){length(data[which(data == i)])}
   
   x <- data[which(data != 0)]
